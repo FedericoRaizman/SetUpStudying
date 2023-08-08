@@ -4,77 +4,7 @@
     <!-- Título de la página -->
     <title>Iniciar Sesión</title>
     <!-- Estilos CSS -->
-    <style>
-        /* Estilos para el cuerpo de la página */
-        body {
-            font-family: Arial, sans-serif; /* Fuente de texto */
-            background-color: #8c00ff; /* Color de fondo */
-        }
-
-        /* Estilos para el título principal */
-        h1 {
-            text-align: center; /* Centrar el texto */
-            margin-top: 30px; /* Margen superior de 30px */
-            color: rgb(255, 255, 255); /* Color del texto */
-        }
-
-        /* Estilos para el contenedor que rodea el formulario */
-        .container {
-            max-width: 370px; /* Ancho máximo del contenedor */
-            height: 580px; /* Altura del contenedor */
-            margin: 60px auto; /* Margen superior e inferior de 30px y centrado horizontal */
-            background-color: rgb(28, 0, 59); /* Color de fondo del contenedor */
-            border-radius: 5px; /* Borde redondeado */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra alrededor del contenedor */
-            padding: 30px; /* Espaciado interno de 20px */
-            margin-top: 0px;
-            margin-left: 20px;
-        }
-
-        /* Estilos para las etiquetas del formulario */
-        label {
-            display: block; /* Convertir la etiqueta en un bloque */
-            margin-bottom: 5px; /* Margen inferior de 5px */
-            color: rgb(255, 255, 255); /* Color del texto */
-        }
-
-        /* Estilos para los campos de entrada de texto y contraseña */
-        input[type="text"],
-        input[type="password"] {
-            width: 93%; /* Ancho completo */
-            padding: 10px; /* Espaciado interno de 10px */
-            margin-bottom: 20px; /* Margen inferior de 20px */
-            border: 1px solid #ccc; /* Borde de 1px con color #ccc */
-            border-radius: 4px; /* Borde redondeado */
-        }
-
-        /* Estilos para el botón de envío del formulario */
-        input[type="submit"] {
-            width: 100%; /* Ancho completo */
-            padding: 10px; /* Espaciado interno de 10px */
-            background-color: #062d57; /* Color de fondo */
-            color: #fff; /* Color del texto */
-            border: none; /* Sin borde */
-            border-radius: 4px; /* Borde redondeado */
-            cursor: pointer; /* Cambiar el cursor al pasar por encima */
-        }
-
-        /* Estilos para el botón de envío del formulario cuando se pasa el cursor por encima */
-        input[type="submit"]:hover {
-            background-color: #0056b3; /* Cambiar el color de fondo al pasar por encima */
-        }
-
-        /* Estilos para el contenedor del enlace "Crear Usuario" y "Iniciar Sesión" */
-        .link-container {
-            text-align: center; /* Centrar el texto */
-            margin-top: 10px; /* Margen superior de 10px */
-        }
-
-        /* Estilos para el enlace "Crear Usuario" */
-        .link-container a {
-            text-decoration: none; /* Quitar subrayado del enlace */
-            color: #ffffff; /* Color del texto del enlace */
-        }
+  <style>
     </style>
 </head>
 <body>
@@ -83,9 +13,9 @@
         <!-- Título principal -->
         <h1>Inicio de Sesión</h1>
         <!-- Formulario de inicio de sesión -->
-        <form action="procesar_inicio_sesion.php" method="post">
+        <form action="./Login.php" method="POST">
             <!-- Etiqueta para el nombre de usuario -->
-            <label for="username">Nombre de Usuario:</label>
+            <label for="username">Mail:</label>
             <!-- Campo de entrada para que el usuario escriba su nombre de usuario -->
             <input type="text" id="username" name="username" required>
             <br>
@@ -100,6 +30,7 @@
             <input type="submit" value="Iniciar Sesión">
         </form>
         
+        <form action="procesar_registro_usuario.php" method="post"></form>
         <!-- Contenedor para el enlace "Crear Usuario" -->
         <div class="link-container">
             <p>¿Aún no tienes una cuenta? <a href="#" onclick="mostrarRegistro()">Crear Usuario</a></p>
@@ -107,16 +38,28 @@
     </div>
 
     <!-- Contenedor para la pantalla de registro de usuario (inicialmente oculto) -->
+    
     <div class="container" id="registro" style="display: none;">
         <!-- Título principal -->
         <h1>Crear Usuario</h1>
-        <!-- Formulario de registro de usuario -->
-        <form action="procesar_registro_usuario.php" method="post">
-            <!-- Etiqueta para el nombre de usuario -->
-            <label for="new_username">Nuevo Nombre de Usuario:</label>
-            <!-- Campo de entrada para que el usuario escriba su nuevo nombre de usuario -->
-            <input type="text" id="new_username" name="new_username" required>
-            <br>
+        <!-- Etiqueta para el nombre de usuario -->
+    <label for="new_username">Mail:</label>
+    <!-- Campo de entrada para que el usuario escriba su nuevo nombre de usuario -->
+    <input type="text" id="new_username" name="new_username" required>
+    <br> <!-- Agrega un salto de línea aquí -->
+
+    <!-- Etiqueta para el nombre -->
+    <label for="name">Nombre:</label>
+    <!-- Campo de entrada para que el usuario escriba su nombre -->
+    <input type="text" id="name" name="name" required>
+    <br> <!-- Agrega un salto de línea aquí -->
+
+    <!-- Etiqueta para el apellido -->
+    <label for="username">Apellido:</label> <!-- Aquí corregí el cierre de comillas faltante -->
+    <!-- Campo de entrada para que el usuario escriba su apellido -->
+    <input type="text" id="username" name="username" required>
+    <br> <!-- Agrega un salto de línea aquí -->
+            
 
             <!-- Etiqueta para la contraseña -->
             <label for="new_password">Nueva Contraseña:</label>
