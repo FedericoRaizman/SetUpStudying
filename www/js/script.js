@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Objeto para almacenar los eventos
     let events = [];
   
-    // Función para agregar un evento al arreglo de eventos
+    // Función para agregar un evento al array de eventos
     function addEvent(eventName, eventDate) {
       events.push({ name: eventName, date: eventDate });
     }
