@@ -1,7 +1,7 @@
 <?php
 
-$nombre $_FILES['archivo']['name'];
-$guardado $_FILES['archivo']['tmp_name'];
+$nombre=$_FILES['archivo']['name'];
+$guardado= $_FILES['archivo']['tmp_name'];
 
 if(!file_exists('archivos')){
     mkdir('archivos', 0777, true);
