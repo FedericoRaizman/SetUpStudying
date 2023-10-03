@@ -22,6 +22,7 @@ session_start();
             </div>
         </section>
     </main>
+    <?php include("subirarchivos.php");?>
     <footer>
         <p>SetUpStudying - Todos los derechos reservados.</p>
     </footer>
