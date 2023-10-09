@@ -1,15 +1,16 @@
 <?php
+session_start();
 include ("conexion.php");
 
 //echo  $usuario." ".$contrasenia;
 
-$sql="INSERT INTO eventos (IDCalendario,IDUSUARIO,Fecha,Evento,Tema) VALUES ('".$_REQUEST['Evento']."','".$_REQUEST['Fecha']."','".$_REQUEST['Tema']."')";
+$sql="INSERT INTO calendario (IDUSUARIO,Fecha,Evento,Tema) VALUES (".$_SESSION['Usu'].",'".$_REQUEST['FechaEvento']."','".$_REQUEST['NombreEvento']."','".$_REQUEST['Tema']."')";
 
 //echo $sql;
 
 $datos=$conexion->query($sql);
 
-echo // mostrar el evento en el calendario;
+echo "";// mostrar el evento en el calendario;
 
 $conexion->close();
 
