@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Título de la página -->
+    <title>Iniciar Sesión</title>
+    <meta charset="UTF-8"> <!-- Agregar esta línea para asegurarte de que los caracteres especiales se muestren correctamente -->
+    <!-- Estilos CSS -->
+    <style>
+        /* Estilos para el contenedor principal */
+        .container {
+            width: 300px;
+            margin: 0 auto; /* Centrar horizontalmente */
+            padding: 30px;
+            background-color: #f2f2f2;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+            position: absolute;
+            left: 50%;
+            top: 50%; /* Center verticalmente */
+            transform: translate(-160%, -50%); /* Center both horizontalmente y verticalmente */
+        }
+
+        /* Ajusta el estilo del título principal según tus preferencias */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para etiquetas de formulario y campos de entrada */
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: left; /* Alinea a la izquierda */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilos para el botón de envío */
+        input[type="submit"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 15px 0;
+            background-color: #006d80;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border: 1px solid rgb(186, 130, 238); /* Agregar un borde fino violeta */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #000;
+        }
+
+        /* Estilos para el enlace "Iniciar Sesión" */
+        .link-container a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .link-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenedor para la pantalla de inicio de sesión -->
+    <div class="container" id="login">
+        <!-- Título principal -->
+        <h1>¡Bienvenido!</h1>
+        <!-- Formulario de inicio de sesión -->
+        <form action="./Login.php" method="POST">
+            <!-- Etiqueta para el nombre de usuario -->
+            <label for="username">Mail:</label>
+            <!-- Campo de entrada para que el usuario escriba su nombre de usuario -->
+            <input type="text" id="username" name="username" required>
+            <br>
+
+            <!-- Etiqueta para la contraseña -->
+            <label for="password">Contraseña:</label>
+            <!-- Campo de entrada para que el usuario escriba su contraseña -->
+            <input type="password" id="password" name="password" required>
+            <br>
+
+            <div class="link-container">
+                <p>¿Aún no tienes una cuenta? <a href="#" onclick="mostrarRegistro()">Crear Usuario</a></p>
+            </div>
+
+            <!-- Botón de envío para enviar el formulario de inicio de sesión -->
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+    </div>
+</body>
+</html>

@@ -21,6 +21,10 @@
 
     }
 
+    h1 {
+    font-size: 60px; /* Modifica el tamaño de la fuente según tus preferencias */
+  }
+
     .container {
         display: flex;
         justify-content: center;
@@ -41,19 +45,20 @@
 
     .button {
         display: inline-block;
-        padding: 10px 20px;
-        font-size: 18px;
+        padding: 12px 24px; /* Aumentar el relleno superior e inferior y el relleno izquierdo y derecho */
+        font-size: 20px; /* Aumentar el tamaño de la fuente a 20px */
         position: relative;
         text-decoration: none;
         margin: 10px;
-        border: 1px solid violet; /* Agregar un borde fino violeta */
+        border: 1px solid rgb(186, 130, 238);
         border-radius: 30px;
         overflow: hidden;
-        color: rgb(0, 0, 0);
-        background-color: rgba(255, 255, 255, 0.7);
+        color: rgba(0, 0, 0, 1); /* Texto con cierta transparencia */
+        background-color: rgba(255, 255, 255, 0.45); /* Fondo con más transparencia */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
         backdrop-filter: blur(5px);
+
     }
 
     .button:hover {
@@ -66,9 +71,11 @@
 <body>
     
     <div class="container">
-        <h1>Welcome to Set Up Studying</h1>
-        <h2>Estudia y Organ&iacutezate</h2>
-        <p>Your platform for effective learning.</p>
+        
+        <h1>Estudia</h1>
+        <h1>Organ&iacutezate</h1>
+        <div style="margin-bottom: 20px;"></div>
+       
         <div class="buttons">
             <a href="login.html" class="button">Iniciar Sesión</a>
             <a href="registro.html" class="button">Crear Cuenta</a>
