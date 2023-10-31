@@ -22,7 +22,7 @@ if($datos->num_rows>0){
 
 }else{
     //echo "No existe usuario";
-    header("Location: ../html/iniciodesesion.html");
+    header("Location: ../html/iniciarsesion.html");
 }
 
 $conexion->close();
