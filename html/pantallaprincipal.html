@@ -5,6 +5,9 @@
   <title>Pantalla principal</title>
   <style>
     /* Estilos previos */
+    body {
+      overflow: hidden; /* Oculta la barra de tareas */
+    }
 
     .container-menu {
       background-color: rgb(186, 130, 238);
@@ -12,49 +15,21 @@
       height: 100vh;
       position: fixed;
       top: 0;
-      left: 0;
+      left: -200px; /* Inicialmente oculto fuera de la pantalla */
       z-index: 10;
       border-radius: 5px;
       padding: 20px;
+      transition: left 0.3s; /* Agregar transición para un efecto suave */
     }
 
-    .logo-perfil {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
+    /* Mostrar el menú al pasar el cursor sobre el contenedor */
+    body:hover .container-menu {
+      left: 0;
     }
 
-    .logo-perfil img {
-      width: 100px;
-    }
-
-    .buscador {
-      margin-top: 20px;
-    }
-
-    /* Estilos para el campo de búsqueda */
-
-    .buscador input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      background-color: #fff;
-      font-size: 16px;
-      outline: none;
-    }
-
-    .buscador i {
-      position: relative;
-      left: -30px;
-      top: 3px;
-    }
-
-    .secciones {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      margin: 10px 0;
+    /* Ocultar secciones cuando el contenedor está oculto */
+    .container-menu .secciones {
+      display: none;
     }
 
     .seccion {
@@ -63,39 +38,40 @@
       justify-content: space-between;
     }
 
-    /* Agregar logos a las secciones */
-
-    .seccion i {
-      font-family: cursive;
-      color: #333;
-    }
-
-    .seccion span {
-      font-size: 16px;
-      color: #333;
-    }
-
-    /* Estilos para el enlace del usuario */
-
-    .usuario {
+    /* Mostrar secciones cuando el contenedor se abre */
+    .container-menu:hover .secciones {
+      display: flex;
+      flex-direction: column;
       margin-top: 20px;
+    }
+
+    .user-info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Cambiar el icono de cerrar sesión */
+.cerrar-sesion i {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOE+dU9FtwlAQs5OqTRoqMQIj0AkQE7RMQJgAmCAdASYoTNBu0G5QNigj8NHmJRKJqxclEqAESO/nSad7PvvOR5SRJJoKmAHoVTkSGxAr75bLKnf60iZMqlcJzxRs4edBUQ9ElGeYBwHf60D4YxS6RARh6PvcNnVqZBAn+gKwvve4aPvZ1tMk0l4YPvg8pF6LZdneEE8S5hXbVgDGyM7ko0AvJbcCqGjFsRaOi3EGTI4AilUS/WtmYbfm8GQGxiiEg8G1AAR2rSVI6qYpohyw6z+WcKmzHSIdvEnoZnuMOh1uWjEoJBJj7w4jkrvKB9+5sA58vlxiUGvlJNHM+l05Hv9lZYv6a7RyiIFyLDN7gWW4Qp8Opnth0uTU4hqLizQKRUyJIx9sIaz9M/L+AGfkrjsr92lUAAAAAElFTkSuQmCC');
+  width: 20px; /* Ancho deseado */
+  height: 20px; /* Alto deseado */
+  background-size: cover;
+}
+
+
+    /* Centrar textos en el medio del container */
+    .container-menu p,
+    .container-menu .seccion span {
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
   <div class="container-menu">
-
-    <div class="logo-perfil">
-      <img src="img/logo.png" alt="Logo">
-      <img src="img/perfil.jpg" alt="Foto de perfil">
+    <div class="user-info">
+      <p>USER</p>
     </div>
-
-    <div class="buscador">
-      <i class="icono lupa">&#128269;</i>
-      <input type="text" placeholder="Buscar en tu cuenta">
-    </div>
-
     <div class="secciones">
       <a href="#">
         <div class="seccion">
@@ -128,15 +104,13 @@
         </div>
       </a>
     </div>
-
-    <div class="usuario">
-      <a href="#">Cerrar sesión</a>
+    <div class="cerrar-sesion">
+      <a href="#">
+        <i class="icono cerrar">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOE+dU9FtwlAQs5OqTRoqMQIj0AkQE7RMQJgAmCAdASYoTNBu0G5QNigj8NHmJRKJqxclEqAESO/nSad7PvvOR5SRJJoKmAHoVTkSGxAr75bLKnf60iZMqlcJzxRs4edBUQ9ElGeYBwHf60D4YxS6RARh6PvcNnVqZBAn+gKwvve4aPvZ1tMk0l4YPvg8pF6LZdneEE8S5hXbVgDGyM7ko0AvJbcCqGjFsRaOi3EGTI4AilUS/WtmYbfm8GQGxiiEg8G1AAR2rSVI6qYpohyw6z+WcKmzHSIdvEnoZnuMOh1uWjEoJBJj7w4jkrvKB9+5sA58vlxiUGvlJNHM+l05Hv9lZYv6a7RyiIFyLDN7gWW4Qp8Opnth0uTU4hqLizQKRUyJIx9sIaz9M/L+AGfkrjsr92lUAAAAAElFTkSuQmCC" alt="Cerrar Sesión">
+        <span>USER</span>
+      </a>
     </div>
-
-  </div>
-
-  <div class="buscador-central">
-    <input type="text" placeholder="Buscar fuentes/resúmenes">
   </div>
 
 </body>
