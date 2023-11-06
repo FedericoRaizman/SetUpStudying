@@ -1,8 +1,8 @@
 <?php
 include ("conexion.php");
 
-$usuario=$_POST['mail'];
-$contrasenia=$_POST['pass'];
+$usuario=$_POST['username'];
+$contrasenia=$_POST['password'];
 
 //echo  $usuario." ".$contrasenia;
 
