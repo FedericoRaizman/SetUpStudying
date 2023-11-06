@@ -35,7 +35,11 @@
     .seccion {
       margin: 10px 0;
       display: flex;
-      justify-content: space-between;
+      align-items: center; /* Alinea verticalmente hacia el centro */
+    }
+
+    .seccion i {
+      margin-right: 10px; /* Espacio entre el icono y el texto */
     }
 
     /* Mostrar secciones cuando el contenedor se abre */
@@ -56,15 +60,37 @@
   width: 20px; /* Ancho deseado */
   height: 20px; /* Alto deseado */
   background-size: cover;
+  box-shadow: none; /* Eliminar la sombra blanca */
 }
-
 
     /* Centrar textos en el medio del container */
     .container-menu p,
     .container-menu .seccion span {
       text-align: center;
+      display: flex;
+      justify-content: center;
     }
-  </style>
+
+    .iconocerrar{
+    margin-top: 150px;
+    }
+
+    .container-menu a {
+      text-decoration: none; /* Quuitar subrayado de los enlaces */
+      color: white; /* Cambiar el color del texto de los enlaces si es necesario */
+    }
+
+    /* Estilo para los enlaces cuando se pasa el cursor por encima */
+    .container-menu a:hover {
+      text-decoration: underline; /* Subrayar los enlaces al pasar el cursor por encima */
+    }
+
+    /* Mover la sección "Cerrar Sesión" hacia abajo del contenedor */
+    .cerrar-sesion {
+      order: 1; /* Cambia el orden de visualización para moverlo hacia abajo */
+    }
+</style>
+
 </head>
 <body>
 
