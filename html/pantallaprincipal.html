@@ -7,7 +7,15 @@
     /* Estilos previos */
     body {
       overflow: hidden; /* Oculta la barra de tareas */
+      font-family: Arial, sans-serif;
     }
+
+    .linea-horizontal {
+  border: 1px solid rgba(97, 97, 97, 0.5); /* Color con nivel de transparencia */
+  margin: 5px 0; /* Ajusta el espacio entre la línea y las secciones */
+}
+
+
 
     .form button {
   border: none;
@@ -21,7 +29,7 @@
   --height-of-input: 40px;
   --border-height: 2px;
   --input-bg: #fff;
-  --border-color: #2f2ee9;
+  --border-color: #e92e2e;
   --border-radius: 30px;
   --after-border-radius: 1px;
   position: relative;
@@ -133,11 +141,14 @@ input:not(:placeholder-shown) ~ .reset {
 
 
     .user-info {
-      text-align: center;
-      margin-bottom: 30px;
-      margin-top: -20px;
-      margin-left: -120px;
-    }
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: -20px;
+  margin-left: -120px;
+  color: white;
+  font-size: 14px; /* Establece el tamaño de la letra en 14px o ajusta el valor según tus preferencias */
+}
+
     #cerrarSesion{
         margin-right:8px;
     }
@@ -164,9 +175,25 @@ input:not(:placeholder-shown) ~ .reset {
 
     /* Mover la sección "Cerrar Sesión" hacia abajo del contenedor */
     .cerrar-sesion {
-     margin-top: 315px;
+     margin-top: 280px;
      margin-right: 30px; /* Espacio entre el icono y el texto */
     }
+    .user-info img {
+  width: 50px; /* Cambia el ancho de la imagen */
+  height: 50px; /* Cambia la altura de la imagen */
+  margin-left: 11px;
+}
+.user-info img {
+  display: inline-block; /* Coloca la imagen junto al texto */
+  vertical-align: middle; /* Alinea verticalmente la imagen con el texto */
+}
+
+.user-info p {
+  display: inline-block; /* Puedes aplicar esto para el párrafo si es necesario */
+  vertical-align: middle; /* Alinea verticalmente el párrafo con la imagen */
+}
+
+
 </style>
 
 </head>
@@ -204,6 +231,7 @@ input:not(:placeholder-shown) ~ .reset {
         </div>
       </a>
       <a href="#">
+        <hr class="linea-horizontal">
         <div class="seccion">
           <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAYAAADAHFVeAAAAAXNSR0IArs4c6QAAAbVJREFUSEvNljFLXEEUhb8DFoIpLAQFhVgI5gcEtNPCQrCwSZl/YRHBxsZiC39ESjuLbSwEBQsFLYUtLEyXIkWKQIQoV47MLtm3O2+dRZcdeLxiz8735sydc0eMcKiOFRGTgJ8HSQ/9tK/RtP83CPYJ8NOS1MrABmqysIiYAKaBD8AqsAJcAZcZF6qaP8BvSY9VfdfKIsKA9QSwdgFYBO6BHxnYx4rmH3ADXEgyuDOqsA1g21+WAEttG21lBtaxMWnmkjMnks7qYN+AGaAh6VdE2KLPtlDSdWbPujQR4S3YSVYe1sH2/aOkl3dE+CsN/2l4BtajiYiuefoWSE5UehTHFrYGnJeupqJ/maO9HXU2jhTWKZBhVze2e1YtfZ8jp4QP+lUuI/93YaiVpUP9FZgFnHXHko4G2TsszDlp2BTggG5K+v5eMOfeJjAPOEFOc7H1Fja6cTrr/M62jupKX2vjXpr8QJILonikzr0L/JXUqAviL8BWahV3qShKgQ5mtyYnSLMOZqF72jLwVEpJejfP29Q8uzpFzx0k2eC24r1yBZYOA9yS6q8FpbOW6mtvV6WTDdI/A9Y16xpCVPdwAAAAAElFTkSuQmCC" id = "cerrarSesion">
           <span>Calendario</span>
@@ -215,8 +243,9 @@ input:not(:placeholder-shown) ~ .reset {
           <span>Documentos</span>
         </div>
       </a>
+      <hr class="linea-horizontal">
     <div class="cerrar-sesion">
-      <a href="#">
+      <a href="pantallainicio.html">
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOE+dU9FtwlAQs5OqTRoqMQIj0AkQE7RMQJgAmCAdASYoTNBu0G5QNigj8NHmJRKJqxclEqAESO/nSad7PvvOR5SRJJoKmAHoVTkSGxAr75bLKnf60iZMqlcJzxRs4edBUQ9ElGeYBwHf60D4YxS6RARh6PvcNnVqZBAn+gKwvve4aPvZ1tMk0l4YPvg8pF6LZdneEE8S5hXbVgDGyM7ko0AvJbcCqGjFsRaOi3EGTI4AilUS/WtmYbfm8GQGxiiEg8G1AAR2rSVI6qYpohyw6z+WcKmzHSIdvEnoZnuMOh1uWjEoJBJj7w4jkrvKB9+5sA58vlxiUGvlJNHM+l05Hv9lZYv6a7RyiIFyLDN7gWW4Qp8Opnth0uTU4hqLizQKRUyJIx9sIaz9M/L+AGfkrjsr92lUAAAAAElFTkSuQmCC" alt="Cerrar Sesión" id="cerrarSesion">
         <span>Cerrar Sesión</span>
       </a>

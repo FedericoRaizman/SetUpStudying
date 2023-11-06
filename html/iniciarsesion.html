@@ -151,9 +151,18 @@
             <input type="password" id="password" name="password" required>
             <br>
 
-            <!-- Botón de envío para enviar el formulario de inicio de sesión -->
-            <input type="submit" value="Ingresar">
-
+            <form id="formularioLogin">
+              <!-- Tus campos de inicio de sesión aquí -->
+              <input type="submit" value="Ingresar">
+            </form>
+            
+            <script>
+              document.getElementById("formularioLogin").addEventListener("submit", function(event) {
+                event.preventDefault(); // Evitar que el formulario se envíe de forma predeterminada
+                window.location.href = "pantallaprincipal.html"; // Redirigir a la página principal
+              });
+            </script>
+            
             <div class="link-container">
                 <p>¿No tenes una cuenta? <a href="crearusuario.html" onclick="mostrarRegistro()">Registrate</a></p>
             </div>
