@@ -1,34 +1,30 @@
 
 
-<form action="carpeta.php" method="post">
-    <input type="text" name="folder_name" placeholder="Nombre de la carpeta">
-    <input type="submit" value="Crear carpeta">
+<form action="carpeta2.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="text" name="folder_name"  value="<?php echo $_GET["carpeta"]; ?>" hidden>
+    <input type="submit" value="Subir archivo">
 </form>
 
 
 <?php
 session_start();
 //include ("conexion.php");
-$directorio = "../uploads/".$_SESSION['Usu'];
+$directorio = "../uploads/".$_SESSION['Usu']."/".$_GET["carpeta"];
+
 listadoDirectorio($directorio);
 
-if (isset ($_SESSION['Usu'])){
-    $directorio = __DIR__ . DIRECTORY_SEPARATOR . "../uploads/".$_SESSION['Usu'];
-    # Lo imprimo solo para depurar
-    //echo $directorio;
-    if (!file_exists($directorio)) {
-        mkdir($directorio);
-    }
-}
+var_dump($_FILES);
 
-
-if (isset ($_POST['folder_name'])){
+if (isset ($_FILES['file'])){
     $directorio = __DIR__ . DIRECTORY_SEPARATOR . "../uploads/".$_SESSION['Usu']."/".$_POST['folder_name'];
     # Lo imprimo solo para depurar
     //echo $directorio;
     if (!file_exists($directorio)) {
-        mkdir($directorio);
-        listadoDirectorio("../uploads/".$_SESSION['Usu']);
+        // mkdir($directorio);
+        // listadoDirectorio("../uploads/".$_SESSION['Usu']);
+        // Guardar el archivo
+        echo $directorio;
     }
 
 }
@@ -46,7 +42,7 @@ function listadoDirectorio($directorio){
             echo "<li>- <a href='$directorio/$elemento'>$elemento</a></li>";
         }
         if(is_dir($directorio.'/'.$elemento)) {
-            echo '<li class="open-dropdown"><a href="carpeta2.php?carpeta='.$elemento.'">+ '.$elemento.'</a></li>';
+            echo '<li class="open-dropdown">+ '.$elemento.'</li>';
             echo '<ul class="dropdown d-none">';
                 listadoDirectorio($directorio.'/'.$elemento);
             echo '</ul>';
