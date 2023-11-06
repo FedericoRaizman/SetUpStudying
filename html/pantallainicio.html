@@ -66,22 +66,63 @@
         transform: scale(1.05);
         box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
     }
+    
+    @keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
     </style>
 </head>
 <body>
-    
-    <div class="container">
+    <div class="animated animatedFadeInUp fadeInUp">
+        <div class="container">
         
-        <h1>Estudia</h1>
-        <h1>Organ&iacutezate</h1>
-        <div style="margin-bottom: 20px;"></div>
-       
-        <div class="buttons">
-            <a href="iniciarsesion.html" class="button">Iniciar Sesión</a>
-    
-            <a href="crearusuario.html" class="button">Crear Cuenta</a>
+            <h1>Estudia</h1>
+            <h1>Organ&iacutezate</h1>
+            <div style="margin-bottom: 20px;"></div>
+           
+            <div class="buttons">
+                <a href="iniciarsesion.html" class="button">Iniciar Sesión</a>
+        
+                <a href="crearusuario.html" class="button">Crear Cuenta</a>
+            </div>
+            
         </div>
-        
     </div>
 </body>
 </html>

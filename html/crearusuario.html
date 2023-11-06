@@ -101,12 +101,53 @@ body {
             padding: 10px;
             width: calc(100% - 40px);
         }
+
+        @keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
     </style>
 </head>
 <body>
     <!-- Contenedor para la pantalla de registro de usuario -->
     <div class="container" id="registro">
         <!-- Título principal -->
+        <div class="animated animatedFadeInUp fadeInUp">
         <h1>¡Registrese aquí!</h1>
         <!-- Formulario for user registration -->
         <form action="procesar_registro_usuario.php" method="post">
@@ -142,5 +183,6 @@ body {
             <p>¿Ya tenes tu cuenta? <a href="iniciarsesion.html" onclick="mostrarInicioSesion()">Iniciar Sesión</a></p>
         </div>  
     </div>
+</div>
 </body>
 </html>
