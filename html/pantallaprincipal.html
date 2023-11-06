@@ -9,8 +9,90 @@
       overflow: hidden; /* Oculta la barra de tareas */
     }
 
+    .form button {
+  border: none;
+  background: none;
+  color: #8846dd;
+}
+/* styling of whole input container */
+.form {
+  --timing: 0.3s;
+  --width-of-input: 200px;
+  --height-of-input: 40px;
+  --border-height: 2px;
+  --input-bg: #fff;
+  --border-color: #2f2ee9;
+  --border-radius: 30px;
+  --after-border-radius: 1px;
+  position: relative;
+  width: var(--width-of-input);
+  height: var(--height-of-input);
+  display: flex;
+  align-items: center;
+  padding-inline: 0.8em;
+  border-radius: var(--border-radius);
+  transition: border-radius 0.5s ease;
+  background: var(--input-bg,#fff);
+  margin-left:-12px;
+  margin-bottom: 19px;
+}
+/* styling of Input */
+.input {
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+}
+/* styling of animated border */
+.form:before {
+  content: "";
+  position: absolute;
+  background: var(--border-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: var(--border-height);
+  left: 0;
+  bottom: 0;
+  border-radius: 1px;
+  transition: transform var(--timing) ease;
+}
+/* Hover on Input */
+.form:focus-within {
+  border-radius: var(--after-border-radius);
+}
+
+input:focus {
+  outline: none;
+}
+/* here is code of animated border */
+.form:focus-within:before {
+  transform: scale(1);
+}
+/* styling of close button */
+/* == you can click the close button to remove text == */
+.reset {
+  border: none;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
+}
+/* close button shown when typing */
+input:not(:placeholder-shown) ~ .reset {
+  opacity: 1;
+  visibility: visible;
+}
+/* sizing svg icons */
+.form svg {
+  width: 17px;
+  margin-top: 3px;
+}
+
     .container-menu {
-      background-color: rgb(186, 130, 238);
+      background-color: #8c50da;
       width: 200px;
       height: 100vh;
       position: fixed;
@@ -18,8 +100,8 @@
       left: -200px; /* Inicialmente oculto fuera de la pantalla */
       z-index: 10;
       border-radius: 5px;
-      padding: 20px;
-      transition: left 0.3s; /* Agregar transición para un efecto suave */
+      padding: 35px;
+      transition: left 0.8s; /* Agregar transición para un efecto suave */
     }
 
     /* Mostrar el menú al pasar el cursor sobre el contenedor */
@@ -39,7 +121,7 @@
     }
 
     .seccion i {
-      margin-right: 10px; /* Espacio entre el icono y el texto */
+      margin-right: 30px; /* Espacio entre el icono y el texto */
     }
 
     /* Mostrar secciones cuando el contenedor se abre */
@@ -49,30 +131,25 @@
       margin-top: 20px;
     }
 
+
     .user-info {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      margin-top: -20px;
+      margin-left: -120px;
+    }
+    #cerrarSesion{
+        margin-right:8px;
     }
 
     /* Cambiar el icono de cerrar sesión */
-.cerrar-sesion i {
+.cerrar-sesion i {  
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOE+dU9FtwlAQs5OqTRoqMQIj0AkQE7RMQJgAmCAdASYoTNBu0G5QNigj8NHmJRKJqxclEqAESO/nSad7PvvOR5SRJJoKmAHoVTkSGxAr75bLKnf60iZMqlcJzxRs4edBUQ9ElGeYBwHf60D4YxS6RARh6PvcNnVqZBAn+gKwvve4aPvZ1tMk0l4YPvg8pF6LZdneEE8S5hXbVgDGyM7ko0AvJbcCqGjFsRaOi3EGTI4AilUS/WtmYbfm8GQGxiiEg8G1AAR2rSVI6qYpohyw6z+WcKmzHSIdvEnoZnuMOh1uWjEoJBJj7w4jkrvKB9+5sA58vlxiUGvlJNHM+l05Hv9lZYv6a7RyiIFyLDN7gWW4Qp8Opnth0uTU4hqLizQKRUyJIx9sIaz9M/L+AGfkrjsr92lUAAAAAElFTkSuQmCC');
-  width: 20px; /* Ancho deseado */
-  height: 20px; /* Alto deseado */
-  background-size: cover;
-  box-shadow: none; /* Eliminar la sombra blanca */
+  
 }
-
-    /* Centrar textos en el medio del container */
-    .container-menu p,
-    .container-menu .seccion span {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-    }
-
     .iconocerrar{
-    margin-top: 150px;
+    margin-top: 0 0 100px 0;
+    
     }
 
     .container-menu a {
@@ -87,7 +164,8 @@
 
     /* Mover la sección "Cerrar Sesión" hacia abajo del contenedor */
     .cerrar-sesion {
-      order: 1; /* Cambia el orden de visualización para moverlo hacia abajo */
+     margin-top: 315px;
+     margin-right: 30px; /* Espacio entre el icono y el texto */
     }
 </style>
 
@@ -96,48 +174,55 @@
 
   <div class="container-menu">
     <div class="user-info">
+      <img src = "data:image/png;base64,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" id = "cerrarSesion"> 
       <p>USER</p>
-    </div>
+          </div>
     <div class="secciones">
+      <form class="form">
+        <button>
+            <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+                <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <input class="input" placeholder="Buscar en tu cuenta" required="" type="text">
+        <button class="reset" type="reset">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </form>
       <a href="#">
         <div class="seccion">
-          <i class="icono home">&#127968;</i>
+          <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAVRJREFUOE/V1N1NwzAQB3BfPmxFykNHKBuwQckGdIKGCRghzQTABIQJYIOGDdigjNCHSJEvH4euiiM3hJZUlRB5Tfzz+e7vgLjwAxf2xEmwLMu567ob3rhpmigIgs9jRRwFDUZE74wAwOIU+iNYFMW1lPKVMaVUzKDWOmMUEZdhGH6MVToKdtiGiJ6UUmt7odZ6DQD3iBiNod9ArfUtADyPYQY2KBHdKaXe7A0PwLquV23bZkSUDisbHq9DE8dxYs/zXsz7HuwGsP0NNqg06QaV7wdnXpZlGbuum0gpr6ZkExG3QohUSpn9DVhVVUJEN10Oc9/3U/sEkyo0bSCifdM5LsPJTgK7SS6klBGDiMjZ5KD32fz/4AMALK2mc89m5shVVfHd3gGA6emsbVu+Vf2N6XPICxHxEQBWFriz76z5YQgh5tY3udnwIIdTwnz2//CcTb4Aq+QEJE0u4+oAAAAASUVORK5CYII=" id="cerrarSesion">
           <span>Home</span>
         </div>
       </a>
       <a href="#">
         <div class="seccion">
-          <i class="icono carpeta">&#128193;</i>
+          <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAALNJREFUOE/dk9ENwjAMRH2NZClTwCZlE2ASyiTJKHQS2CKKpajI0EhJCepH/+qvyLnYytMdRORJREf6Lc/MV23HGAcAt4bmBRGZmBnlZQjhYozpiwEewIOZfanTt3sZQEQfWEX1el4wmIhoXOgcZsKHBuExQ8tQGxqq6LcEa73tA0TE/dmy+gUAXyOllCqIXdedAKjBshPVSKqrIBpj3F6MtDVMzTinlO7W2mGOs0I8t+L8Bp8PzOoXPapOAAAAAElFTkSuQmCC"; id="cerrarSesion">
           <span>Carpetas</span>
         </div>
       </a>
       <a href="#">
         <div class="seccion">
-          <i class="icono mensaje">&#128233;</i>
-          <span>Mensajes</span>
+          <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAZCAYAAADAHFVeAAAAAXNSR0IArs4c6QAAAbVJREFUSEvNljFLXEEUhb8DFoIpLAQFhVgI5gcEtNPCQrCwSZl/YRHBxsZiC39ESjuLbSwEBQsFLYUtLEyXIkWKQIQoV47MLtm3O2+dRZcdeLxiz8735sydc0eMcKiOFRGTgJ8HSQ/9tK/RtP83CPYJ8NOS1MrABmqysIiYAKaBD8AqsAJcAZcZF6qaP8BvSY9VfdfKIsKA9QSwdgFYBO6BHxnYx4rmH3ADXEgyuDOqsA1g21+WAEttG21lBtaxMWnmkjMnks7qYN+AGaAh6VdE2KLPtlDSdWbPujQR4S3YSVYe1sH2/aOkl3dE+CsN/2l4BtajiYiuefoWSE5UehTHFrYGnJeupqJ/maO9HXU2jhTWKZBhVze2e1YtfZ8jp4QP+lUuI/93YaiVpUP9FZgFnHXHko4G2TsszDlp2BTggG5K+v5eMOfeJjAPOEFOc7H1Fja6cTrr/M62jupKX2vjXpr8QJILonikzr0L/JXUqAviL8BWahV3qShKgQ5mtyYnSLMOZqF72jLwVEpJejfP29Q8uzpFzx0k2eC24r1yBZYOA9yS6q8FpbOW6mtvV6WTDdI/A9Y16xpCVPdwAAAAAElFTkSuQmCC" id = "cerrarSesion">
+          <span>Calendario</span>
         </div>
       </a>
       <a href="#">
         <div class="seccion">
-          <i class="icono documento">&#128196;</i>
+        <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAAAXNSR0IArs4c6QAAAYVJREFUOE+tkzFPG0EQhefN3qzOsgt3ULqkpIMOuqSkI13oKFEqRBXTmS78ApRfEbnCqULpEjqX7uzGuvXe7Q3ayLZOx10QUq6d+968eTOLLMuGzHwJYJ/efhMAQxH53VAjeO//qOpYVZ9U1W1/YuZPRHQB4LlNIMIPIYTbTqczq6p777+q6hciio7mzDyqO/gnTESnRVGMkyQ5UtWDusC7cAjhZwjh2Vp7XRfYwdEyMx8CmIvINM/z82ibmaeq+gJgT1XPiMhtM9jBG/AqBpfn+b2IHAO4IqLBNgtVTQH0AfwQkZtW202rybJsYIz5TkRLa+23HZym6dx7P2DmN/suimIWt9EKi8hRWZZDIjqodwUwSpLk1jm339p5tVr1jTFpFQ4huG63uwTgWjvXj+RDMxtjTlR1CGCX7kbAqeqdtXbUats5txSRmGa/2jXee1mWs16vN//vth9jmiIybpqz9ljijccnPP17JOv1+heAz++Blfpk8wonWCwW/aZZm8Sq88f6Kza1NiLLOV8UAAAAAElFTkSuQmCC" id = "cerrarSesion">
           <span>Documentos</span>
         </div>
       </a>
-      <a href="#">
-        <div class="seccion">
-          <i class="icono compartido">&#128206;</i>
-          <span>Compartidos</span>
-        </div>
-      </a>
-    </div>
     <div class="cerrar-sesion">
       <a href="#">
-        <i class="icono cerrar">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOE+dU9FtwlAQs5OqTRoqMQIj0AkQE7RMQJgAmCAdASYoTNBu0G5QNigj8NHmJRKJqxclEqAESO/nSad7PvvOR5SRJJoKmAHoVTkSGxAr75bLKnf60iZMqlcJzxRs4edBUQ9ElGeYBwHf60D4YxS6RARh6PvcNnVqZBAn+gKwvve4aPvZ1tMk0l4YPvg8pF6LZdneEE8S5hXbVgDGyM7ko0AvJbcCqGjFsRaOi3EGTI4AilUS/WtmYbfm8GQGxiiEg8G1AAR2rSVI6qYpohyw6z+WcKmzHSIdvEnoZnuMOh1uWjEoJBJj7w4jkrvKB9+5sA58vlxiUGvlJNHM+l05Hv9lZYv6a7RyiIFyLDN7gWW4Qp8Opnth0uTU4hqLizQKRUyJIx9sIaz9M/L+AGfkrjsr92lUAAAAAElFTkSuQmCC" alt="Cerrar Sesión">
-        <span>USER</span>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATFJREFUOE+dU9FtwlAQs5OqTRoqMQIj0AkQE7RMQJgAmCAdASYoTNBu0G5QNigj8NHmJRKJqxclEqAESO/nSad7PvvOR5SRJJoKmAHoVTkSGxAr75bLKnf60iZMqlcJzxRs4edBUQ9ElGeYBwHf60D4YxS6RARh6PvcNnVqZBAn+gKwvve4aPvZ1tMk0l4YPvg8pF6LZdneEE8S5hXbVgDGyM7ko0AvJbcCqGjFsRaOi3EGTI4AilUS/WtmYbfm8GQGxiiEg8G1AAR2rSVI6qYpohyw6z+WcKmzHSIdvEnoZnuMOh1uWjEoJBJj7w4jkrvKB9+5sA58vlxiUGvlJNHM+l05Hv9lZYv6a7RyiIFyLDN7gWW4Qp8Opnth0uTU4hqLizQKRUyJIx9sIaz9M/L+AGfkrjsr92lUAAAAAElFTkSuQmCC" alt="Cerrar Sesión" id="cerrarSesion">
+        <span>Cerrar Sesión</span>
       </a>
     </div>
   </div>
+</div>
 
 </body>
 </html>
