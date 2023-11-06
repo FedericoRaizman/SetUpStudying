@@ -89,45 +89,6 @@
         .link-container a:hover {
           text-decoration: underline;
         }
-
-        @keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-@-webkit-keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 0.1
-    }
-}
-
-.animated {
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-fill-mode: both
-}
-
-.animatedFadeInUp {
-    opacity: 0
-}
-
-.fadeInUp {
-    opacity: 0;
-    animation-name: fadeInUp;
-    -webkit-animation-name: fadeInUp;
-}
       </style>
       
 </head>
@@ -135,7 +96,6 @@
     <!-- Contenedor para la pantalla de inicio de sesión -->
     <div class="container" id="login">
         <!-- Título principal -->
-        <div class="animated animatedFadeInUp fadeInUp">
         <h1>¡Bienvenido!</h1>
         <!-- Formulario de inicio de sesión -->
         <form action="../php/Login.php" method="POST">
@@ -169,6 +129,5 @@
 
         </form>
     </div>
-  </div>
 </body>
 </html>
