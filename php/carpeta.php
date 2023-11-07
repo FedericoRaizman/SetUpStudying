@@ -47,9 +47,9 @@ function listadoDirectorio($directorio){
         }
         if(is_dir($directorio.'/'.$elemento)) {
             echo '<li class="open-dropdown"><a href="carpeta2.php?carpeta='.$elemento.'">+ '.$elemento.'</a></li>';
-            echo '<ul class="dropdown d-none">';
-                listadoDirectorio($directorio.'/'.$elemento);
-            echo '</ul>';
+           //echo '<ul class="dropdown d-none">';
+               // listadoDirectorio($directorio.'/'.$elemento);
+            //echo '</ul>';
         }
     }
 }

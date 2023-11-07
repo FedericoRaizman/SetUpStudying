@@ -18,7 +18,7 @@ if($datos->num_rows>0){
     session_start();
     $_SESSION['Nombre']=$datousuario['NOMBRE']." ".$datousuario['APELLIDO'];
     $_SESSION['Usu']=$datousuario['IDUSUARIO'];
-    header("Location: ../php/pantallaprincipal.php");
+    header("Location: ../html/pantallaprincipal.html");
 
 }else{
     //echo "No existe usuario";
