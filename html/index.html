@@ -24,25 +24,7 @@
   <script src="../js/fullcalendar.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('#CalendarioWeb').fullCalendar({
-        header: {
-          left:'today,prev,next,MiBoton',
-          center: 'title',
-          right:'month,basicWeek, basicDay,agendaWeek,agendaDay'
-        },
-        customButtons:{
-          MiBoton:{
-              text:"Boton 1",
-              click:function(){
-                  alert("Accion del boton ");
-            }
-
-          }
-        }
-
-
-      });
-
+      $('#CalendarioWeb').fullCalendar();
     });
   </script>
 </body>
