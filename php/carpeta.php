@@ -28,7 +28,8 @@ if (isset ($_POST['folder_name'])){
     //echo $directorio;
     if (!file_exists($directorio)) {
         mkdir($directorio);
-        listadoDirectorio("../uploads/".$_SESSION['Usu']);
+        header("Location: carpeta.php");
+        //listadoDirectorio("../uploads/".$_SESSION['Usu']);
     }
 
 }
@@ -41,11 +42,13 @@ function listadoDirectorio($directorio){
     if (count($listado) < 1) {
         return;
     }
+    
     foreach($listado as $elemento){
         if(!is_dir($directorio.'/'.$elemento)) {
             echo "<li>- <a href='$directorio/$elemento'>$elemento</a></li>";
         }
         if(is_dir($directorio.'/'.$elemento)) {
+            
             echo '<li class="open-dropdown"><a href="carpeta2.php?carpeta='.$elemento.'">+ '.$elemento.'</a></li>';
            //echo '<ul class="dropdown d-none">';
                // listadoDirectorio($directorio.'/'.$elemento);
