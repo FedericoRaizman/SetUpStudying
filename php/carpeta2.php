@@ -1,6 +1,10 @@
+<?php 
+if(!isset($_GET["carpeta"])){
+    header("Location: carpeta.php");
+}
+?>
 
-
-<form action="carpeta2.php" method="post" enctype="multipart/form-data">
+<form action="subir_en_carpeta.php" method="post" enctype="multipart/form-data">
     <input type="file" name="file">
     <input type="text" name="folder_name"  value="<?php echo $_GET["carpeta"]; ?>" hidden>
     <input type="submit" value="Subir archivo">
@@ -14,25 +18,11 @@ $directorio = "../uploads/".$_SESSION['Usu']."/".$_GET["carpeta"];
 
 listadoDirectorio($directorio);
 
-var_dump($_FILES);
-
-if (isset ($_FILES['file'])){
-    $directorio = __DIR__ . DIRECTORY_SEPARATOR . "../uploads/".$_SESSION['Usu']."/".$_POST['folder_name'];
-    # Lo imprimo solo para depurar
-    //echo $directorio;
-    if (!file_exists($directorio)) {
-        // mkdir($directorio);
-        // listadoDirectorio("../uploads/".$_SESSION['Usu']);
-        // Guardar el archivo
-        echo $directorio;
-    }
-
-}
-
+// var_dump($_FILES);
 
 function listadoDirectorio($directorio){
-    $listado = scandir($directorio);	    
-    unset($listado[array_search('.', $listado, true)]);    
+    $listado = scandir($directorio);
+    unset($listado[array_search('.', $listado, true)]);
     unset($listado[array_search('..', $listado, true)]);
     if (count($listado) < 1) {
         return;

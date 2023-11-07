@@ -9,7 +9,7 @@ $sql="INSERT INTO usuarios (USUARIO,CONTRASENIA,NOMBRE,APELLIDO) VALUES ('".$_RE
 
 $datos=$conexion->query($sql);
 
-echo "Se ingreso correctamente";
+header("Location: ../html/pantallaprincipal.html");
 
 $conexion->close();
 
