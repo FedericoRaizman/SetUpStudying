@@ -1,3 +1,30 @@
+<?php 
+  session_start();
+
+function listadoDirectorio($directorio){
+  $listado = scandir($directorio);	    
+  unset($listado[array_search('.', $listado, true)]);    
+  unset($listado[array_search('..', $listado, true)]);
+  if (count($listado) < 1) {
+      return;
+  }
+  
+
+  foreach($listado as $elemento){
+      if(!is_dir($directorio.'/'.$elemento)) {
+          echo "<li>- <a href='$directorio/$elemento'>$elemento</a></li>";
+      }
+      if(is_dir($directorio.'/'.$elemento)) {
+          echo '<li class="open-dropdown"><a href="?folder_name='.$elemento.'">+ '.$elemento.'</a></li>';
+         //echo '<ul class="dropdown d-none">';
+             //listadoDirectorio($directorio.'/'.$elemento);
+          //echo '</ul>';
+      }
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -353,7 +380,7 @@ button:hover {
       </a>
 
       
-      <a href="pantallacarpeta.html">
+      <a href="pantallacarpeta.php">
         <div class="seccion">
           <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAALNJREFUOE/dk9ENwjAMRH2NZClTwCZlE2ASyiTJKHQS2CKKpajI0EhJCepH/+qvyLnYytMdRORJREf6Lc/MV23HGAcAt4bmBRGZmBnlZQjhYozpiwEewIOZfanTt3sZQEQfWEX1el4wmIhoXOgcZsKHBuExQ8tQGxqq6LcEa73tA0TE/dmy+gUAXyOllCqIXdedAKjBshPVSKqrIBpj3F6MtDVMzTinlO7W2mGOs0I8t+L8Bp8PzOoXPapOAAAAAElFTkSuQmCC"; id="cerrarSesion">
           <span>Carpetas</span>
@@ -435,8 +462,14 @@ button:hover {
 <a href="formulariocrearcarpeta.html">
   <button class="btn">Agregar carpeta</button>
 </a>
+<div style="padding-left: 100px;">
+<?php 
+    $directorio = __DIR__ . DIRECTORY_SEPARATOR . "../uploads/".$_SESSION['Usu']."/".$_GET['folder_name'];
+  // echo $directorio;
+    listadoDirectorio($directorio);
+    ?>
 </div>
-
+</div>
 
 </form>
 
