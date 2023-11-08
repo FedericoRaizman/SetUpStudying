@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Título de la página -->
+    <title>Crear Usuario</title>
+    <meta charset="UTF-8">
+    <!-- Estilos CSS -->
+    <style>
+
+
+body{
+    background-image: url('./fondosdiseño/carpetafondo.png'); /* Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de tu imagen */
+
+}
+        
+        
+/* Estilos para el contenedor principal */
+.container {
+    width: 300px; /* Cambiado a 300px */
+    margin: 500px 100px 0 400px;
+    background-color: #f2f2f200;
+    border: 0px solid #ccc;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+    
+    left: 50%; /* Center horizontally */
+    top: 50%; /* Center vertically */
+
+    margin-top: 180px;
+    margin-left: 450px;
+}
+
+
+        /* Ajusta el estilo del título principal según tus preferencias */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para etiquetas de formulario y campos de entrada */
+        label {
+            display: block;
+            margin-top: 10px;
+            margin-left: 20px;
+            text-align: left; /* Alinea a la izquierda */
+        }
+
+        input[type="text"],
+        input[type="password"] {
+          width: calc(100% - 40px);
+          padding: 10px;
+          margin: 5px 0;
+          border: 1px solid rgb(186, 130, 238); /* Borde violeta */
+          border-radius: 20px;
+          box-sizing: border-box;
+          font-weight: normal; /* Reducir el grosor de las letras */
+        }   
+
+        /* Estilos para el botón de envío */
+        input[type="submit"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 35px 0 20px 0;
+            background-color: rgb(112, 46, 235);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border: 1px solid rgb(186, 130, 238); /* Agregar un borde fino violeta */
+        }
+
+        @keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Contenedor para la pantalla de registro de usuario -->
+    <div class="container" id="registro">
+        <div class="animated animatedFadeInUp fadeInUp">
+
+
+<!-- Etiqueta para la contraseña -->
+<label for="new_password">Materia:</label>
+<!-- Campo de entrada para que el usuario escriba su nueva contraseña -->
+<input type="password" id="new_password" name="new_password" required>
+<br>
+
+
+<form action="pantallaprincipal.html" method="post">
+    <!-- Otros campos del formulario aquí -->
+    <input type="submit" value="Enviar" onclick="window.location.href='pantallaprincipal.html'; return false;">
+</form>
+
+
+
+</body>
+</html>
