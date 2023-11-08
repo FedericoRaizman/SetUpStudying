@@ -8,9 +8,11 @@
 
 <?php
 session_start();
-//include ("conexion.php");
+include ("conexion.php");
+$usuarioActual = $_SESSION['Usu'];
 $directorio = "../uploads/".$_SESSION['Usu'];
 listadoDirectorio($directorio);
+
 
 if (isset ($_SESSION['Usu'])){
     $directorio = __DIR__ . DIRECTORY_SEPARATOR . "../uploads/".$_SESSION['Usu'];
@@ -29,7 +31,7 @@ if (isset ($_POST['folder_name'])){
     if (!file_exists($directorio)) {
         mkdir($directorio);
         header("Location: carpeta.php");
-        //listadoDirectorio("../uploads/".$_SESSION['Usu']);
+        listadoDirectorio("../uploads/".$_SESSION['Usu']);
     }
 
 }
@@ -43,15 +45,15 @@ function listadoDirectorio($directorio){
         return;
     }
     
+
     foreach($listado as $elemento){
         if(!is_dir($directorio.'/'.$elemento)) {
             echo "<li>- <a href='$directorio/$elemento'>$elemento</a></li>";
         }
         if(is_dir($directorio.'/'.$elemento)) {
-            
             echo '<li class="open-dropdown"><a href="carpeta2.php?carpeta='.$elemento.'">+ '.$elemento.'</a></li>';
            //echo '<ul class="dropdown d-none">';
-               // listadoDirectorio($directorio.'/'.$elemento);
+               //listadoDirectorio($directorio.'/'.$elemento);
             //echo '</ul>';
         }
     }
