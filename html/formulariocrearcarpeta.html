@@ -118,17 +118,17 @@ body{
     <div class="container" id="registro">
         <div class="animated animatedFadeInUp fadeInUp">
 
-
+            
+            <form action="../php/carpeta.php" method="post">
 <!-- Etiqueta para la contraseña -->
-<label for="new_password">Materia:</label>
+<label for="new_password">Nombre de la carpeta:</label>
 <!-- Campo de entrada para que el usuario escriba su nueva contraseña -->
-<input type="password" id="new_password" name="new_password" required>
+<input type="text" id="new_password" name="folder_name" required>
 <br>
 
 
-<form action="pantallaprincipal.html" method="post">
     <!-- Otros campos del formulario aquí -->
-    <input type="submit" value="Enviar" onclick="window.location.href='pantallaprincipal.html'; return false;">
+    <input type="submit" value="Enviar" >
 </form>
 
 

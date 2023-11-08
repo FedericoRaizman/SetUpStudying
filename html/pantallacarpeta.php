@@ -1,3 +1,30 @@
+<?php 
+  session_start();
+
+function listadoDirectorio($directorio){
+  $listado = scandir($directorio);	    
+  unset($listado[array_search('.', $listado, true)]);    
+  unset($listado[array_search('..', $listado, true)]);
+  if (count($listado) < 1) {
+      return;
+  }
+  
+
+  foreach($listado as $elemento){
+      if(!is_dir($directorio.'/'.$elemento)) {
+          echo "<li>- <a href='$directorio/$elemento'>$elemento</a></li>";
+      }
+      if(is_dir($directorio.'/'.$elemento)) {
+          echo '<li class="open-dropdown"><a href="?folder_name='.$elemento.'">+ '.$elemento.'</a></li>';
+         //echo '<ul class="dropdown d-none">';
+             //listadoDirectorio($directorio.'/'.$elemento);
+          //echo '</ul>';
+      }
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,6 +42,11 @@
   border: 1px solid rgba(97, 97, 97, 0.5); /* Color con nivel de transparencia */
   margin: 5px 0; /* Ajusta el espacio entre la línea y las secciones */
 }
+
+    .linea-hori{
+  border: 3px solid rgb(255, 0, 0); /* Color con nivel de transparencia */
+  margin: 5px 0; /* Ajusta el espacio entre la línea y las secciones */
+    }
 
 
 
@@ -143,6 +175,9 @@ input:not(:placeholder-shown) ~ .reset {
       flex-direction: column;
       margin-top: 20px;
     }
+    
+
+    
 
 
     .user-info {
@@ -157,6 +192,47 @@ input:not(:placeholder-shown) ~ .reset {
     #cerrarSesion{
         margin-right:8px;
     }
+
+    .home {
+    float: left;
+    /* Añade otros estilos para la sección "home" según tus necesidades */
+}
+
+#Fotoent {
+    float: right;
+    margin: 10px;
+    width: 29px;
+    height: auto;
+    margin-right: -13px; /* Ajusta el valor según tu preferencia */
+    margin-top: 60px;
+}
+
+#Fotoentr {
+    float: right;
+    margin: 10px;
+    width: 25px;
+    height: auto;
+    margin-right: -36.6px; /* Ajusta el valor según tu preferencia */
+    margin-top: 100px;
+}
+
+#Fotoentra {
+    float: right;
+    margin: 10px;
+    width: 25px;
+    height: auto;
+    margin-right: -36.5px; /* Ajusta el valor según tu preferencia */
+    margin-top: 145px;
+}
+
+#Fotoentrad {
+    float: right;
+    margin: 10px;
+    width: 24px;
+    height: auto;
+    margin-right: -37px; /* Ajusta el valor según tu preferencia */
+    margin-top: 185px;
+}
 
     /* Cambiar el icono de cerrar sesión */
 .cerrar-sesion i {  
@@ -248,67 +324,29 @@ button:active {
   padding: 24px 46px 24px 26px;
 }
 
-
-    .linea-hori{
-  border: 3px solid rgb(255, 0, 0); /* Color con nivel de transparencia */
-  margin: 5px 0; /* Ajusta el espacio entre la línea y las secciones */
-    }
-
-
-
-    .form button {
-      flex-direction: column;
-      margin-top: 20px;
-    }
-    
-
-    
-
-
-    .user-info {
-        margin-right:8px;
-    }
-
-    .home {
-    float: left;
-    /* Añade otros estilos para la sección "home" según tus necesidades */
+.btn {
+ width: 8.5em;
+ height: 2.8em;
+ margin: 0.5em;
+ background: #656ED3;
+ color: white;
+ border: none;
+ border-radius: 0.625em;
+ font-size: 20px;
+ font-weight: bold;
+ cursor: pointer;
+ position: relative;
+ z-index: 1;
+ overflow: hidden;
+ margin-left: 300px;
+ margin-top: -60px;
 }
 
-#Fotoent {
-    float: right;
-    margin: 10px;
-    width: 29px;
-    height: auto;
-    margin-right: -13px; /* Ajusta el valor según tu preferencia */
-    margin-top: 60px;
+button:hover {
+ color: white;
 }
 
-#Fotoentr {
-    float: right;
-    margin: 10px;
-    width: 25px;
-    height: auto;
-    margin-right: -36.6px; /* Ajusta el valor según tu preferencia */
-    margin-top: 100px;
-}
 
-#Fotoentra {
-    float: right;
-    margin: 10px;
-    width: 25px;
-    height: auto;
-    margin-right: -36.5px; /* Ajusta el valor según tu preferencia */
-    margin-top: 145px;
-}
-
-#Fotoentrad {
-    float: right;
-    margin: 10px;
-    width: 24px;
-    height: auto;
-    margin-right: -37px; /* Ajusta el valor según tu preferencia */
-    margin-top: 185px;
-}
 
 </style>
 
@@ -338,8 +376,10 @@ button:active {
         <div class="seccion">
           <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAVRJREFUOE/V1N1NwzAQB3BfPmxFykNHKBuwQckGdIKGCRghzQTABIQJYIOGDdigjNCHSJEvH4euiiM3hJZUlRB5Tfzz+e7vgLjwAxf2xEmwLMu567ob3rhpmigIgs9jRRwFDUZE74wAwOIU+iNYFMW1lPKVMaVUzKDWOmMUEZdhGH6MVToKdtiGiJ6UUmt7odZ6DQD3iBiNod9ArfUtADyPYQY2KBHdKaXe7A0PwLquV23bZkSUDisbHq9DE8dxYs/zXsz7HuwGsP0NNqg06QaV7wdnXpZlGbuum0gpr6ZkExG3QohUSpn9DVhVVUJEN10Oc9/3U/sEkyo0bSCifdM5LsPJTgK7SS6klBGDiMjZ5KD32fz/4AMALK2mc89m5shVVfHd3gGA6emsbVu+Vf2N6XPICxHxEQBWFriz76z5YQgh5tY3udnwIIdTwnz2//CcTb4Aq+QEJE0u4+oAAAAASUVORK5CYII=" id="cerrarSesion">
           <span>Home</span>
-        </div>
+                  </div>
       </a>
+
+      
       <a href="pantallacarpeta.php">
         <div class="seccion">
           <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAALNJREFUOE/dk9ENwjAMRH2NZClTwCZlE2ASyiTJKHQS2CKKpajI0EhJCepH/+qvyLnYytMdRORJREf6Lc/MV23HGAcAt4bmBRGZmBnlZQjhYozpiwEewIOZfanTt3sZQEQfWEX1el4wmIhoXOgcZsKHBuExQ8tQGxqq6LcEa73tA0TE/dmy+gUAXyOllCqIXdedAKjBshPVSKqrIBpj3F6MtDVMzTinlO7W2mGOs0I8t+L8Bp8PzOoXPapOAAAAAElFTkSuQmCC"; id="cerrarSesion">
@@ -378,7 +418,13 @@ button:active {
   <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATRJREFUOE+Vk4FRwlAQRN92gBVoB2gFQgfYAalAqACsQK1AOpAOpAO1ArAC6eCcZe5jEojgn8kkc7ns7e5tRO1ExAB4lHRTr5fniHgHKkkfpaaIuAZmQC+vK2Df0ALyAL/bZn1qgDWwAr6AS2AEPB9jANwDy+ztAwMDBDCUtIoITx9JeuqQMAcWkjYp960AVMmiY/DRshksC8B/Pmz0FoC7P4zrArehLw0P2p0RYUN9bPJM0jQibORn1vce7Ew8ATCXNImIMbA5ACgSJG29jXTa2SBrvdbdEn4ZAA5UX1KVq70AvDYfr3UtyZJfU4IZNyVExG7KOStp52BYYuwQ5RRnwyZaxsL/CDAtA44BeLIZOJE2bJ5NJuT8j+sJrQN8Z/YPtnBCyi0wsSmT2t94jvzSY8YPP7E3v1foiRZrAAAAAElFTkSuQmCC" id = "Fotoentra">
 
   <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAAAXNSR0IArs4c6QAAAYVJREFUOE+tkzFPG0EQhefN3qzOsgt3ULqkpIMOuqSkI13oKFEqRBXTmS78ApRfEbnCqULpEjqX7uzGuvXe7Q3ayLZOx10QUq6d+968eTOLLMuGzHwJYJ/efhMAQxH53VAjeO//qOpYVZ9U1W1/YuZPRHQB4LlNIMIPIYTbTqczq6p777+q6hciio7mzDyqO/gnTESnRVGMkyQ5UtWDusC7cAjhZwjh2Vp7XRfYwdEyMx8CmIvINM/z82ibmaeq+gJgT1XPiMhtM9jBG/AqBpfn+b2IHAO4IqLBNgtVTQH0AfwQkZtW202rybJsYIz5TkRLa+23HZym6dx7P2DmN/suimIWt9EKi8hRWZZDIjqodwUwSpLk1jm339p5tVr1jTFpFQ4huG63uwTgWjvXj+RDMxtjTlR1CGCX7kbAqeqdtXbUats5txSRmGa/2jXee1mWs16vN//vth9jmiIybpqz9ljijccnPP17JOv1+heAz++Blfpk8wonWCwW/aZZm8Sq88f6Kza1NiLLOV8UAAAAAElFTkSuQmCC" id = "Fotoentrad">
+
+
+
 </div>
+
+
+
 <div class="searchBox">
 
   <input class="searchInput" type="text" name="" placeholder="Buscar fuentes/resumenes">
@@ -413,7 +459,19 @@ button:active {
   </button>
 </div>
 
+<a href="formulariocrearcarpeta.html">
+  <button class="btn">Agregar carpeta</button>
+</a>
+<div style="padding-left: 100px;">
+<?php 
+    $directorio = __DIR__ . DIRECTORY_SEPARATOR . "../uploads/".$_SESSION['Usu']."/".$_GET['folder_name'];
+  // echo $directorio;
+    listadoDirectorio($directorio);
+    ?>
+</div>
+</div>
 
+</form>
 
 </body>
 </html>

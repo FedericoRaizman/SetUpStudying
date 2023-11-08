@@ -1,9 +1,9 @@
 
 
-<form action="carpeta.php" method="post">
+<!-- <form action="carpeta.php" method="post">
     <input type="text" name="folder_name" placeholder="Nombre de la carpeta">
     <input type="submit" value="Crear carpeta">
-</form>
+</form> -->
 
 
 <?php
@@ -30,8 +30,8 @@ if (isset ($_POST['folder_name'])){
     //echo $directorio;
     if (!file_exists($directorio)) {
         mkdir($directorio);
-        header("Location: carpeta.php");
-        listadoDirectorio("../uploads/".$_SESSION['Usu']);
+        header("Location: ../html/pantallacarpeta.php");
+        // listadoDirectorio("../uploads/".$_SESSION['Usu']);
     }
 
 }
