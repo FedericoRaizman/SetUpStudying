@@ -4,7 +4,7 @@ include ("conexion.php");
 
 //echo  $usuario." ".$contrasenia;
 
-$sql="INSERT INTO calendario (IDUSUARIO,Fecha,Evento,Tema) VALUES (".$_SESSION['Usu'].",'".$_REQUEST['FechaEvento']."','".$_REQUEST['NombreEvento']."','".$_REQUEST['Tema']."')";
+$sql="INSERT INTO eventos (IDEVENTO,IDUSUARIO,title,descripcion,start,end)< VALUES (".$_SESSION['Usu'].",'".$_REQUEST['FechaEvento']."','".$_REQUEST['NombreEvento']."','".$_REQUEST['Tema']."')";
 
 //echo $sql;
 

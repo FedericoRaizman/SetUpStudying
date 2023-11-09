@@ -386,7 +386,7 @@ button:hover {
           <span>Carpetas</span>
         </div>
       </a>
-      <a href="#calendario">
+      <a href="index.html">
         <hr class="linea-horizontal">
         <div class="seccion">
           <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATRJREFUOE+Vk4FRwlAQRN92gBVoB2gFQgfYAalAqACsQK1AOpAOpAO1ArAC6eCcZe5jEojgn8kkc7ns7e5tRO1ExAB4lHRTr5fniHgHKkkfpaaIuAZmQC+vK2Df0ALyAL/bZn1qgDWwAr6AS2AEPB9jANwDy+ztAwMDBDCUtIoITx9JeuqQMAcWkjYp960AVMmiY/DRshksC8B/Pmz0FoC7P4zrArehLw0P2p0RYUN9bPJM0jQibORn1vce7Ew8ATCXNImIMbA5ACgSJG29jXTa2SBrvdbdEn4ZAA5UX1KVq70AvDYfr3UtyZJfU4IZNyVExG7KOStp52BYYuwQ5RRnwyZaxsL/CDAtA44BeLIZOJE2bJ5NJuT8j+sJrQN8Z/YPtnBCyi0wsSmT2t94jvzSY8YPP7E3v1foiRZrAAAAAElFTkSuQmCC" id = "cerrarSesion">

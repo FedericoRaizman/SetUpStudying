@@ -323,7 +323,9 @@ button:active {
     <div class="secciones">
       <form class="form">
         <button>
-            
+            <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+                <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
         </button>
         <input class="input" placeholder="Buscar en tu cuenta" required="" type="text">
         <button class="reset" type="reset">
@@ -344,14 +346,14 @@ button:active {
           <span>Carpetas</span>
         </div>
       </a>
-      <a href="pantallacalendario.html">
+      <a href="index.html">
         <hr class="linea-horizontal">
         <div class="seccion">
           <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAATRJREFUOE+Vk4FRwlAQRN92gBVoB2gFQgfYAalAqACsQK1AOpAOpAO1ArAC6eCcZe5jEojgn8kkc7ns7e5tRO1ExAB4lHRTr5fniHgHKkkfpaaIuAZmQC+vK2Df0ALyAL/bZn1qgDWwAr6AS2AEPB9jANwDy+ztAwMDBDCUtIoITx9JeuqQMAcWkjYp960AVMmiY/DRshksC8B/Pmz0FoC7P4zrArehLw0P2p0RYUN9bPJM0jQibORn1vce7Ew8ATCXNImIMbA5ACgSJG29jXTa2SBrvdbdEn4ZAA5UX1KVq70AvDYfr3UtyZJfU4IZNyVExG7KOStp52BYYuwQ5RRnwyZaxsL/CDAtA44BeLIZOJE2bJ5NJuT8j+sJrQN8Z/YPtnBCyi0wsSmT2t94jvzSY8YPP7E3v1foiRZrAAAAAElFTkSuQmCC" id = "cerrarSesion">
           <span>Calendario</span>
         </div>
       </a>
-      <a href="pantalladocumentos.html">
+      <a href="#documentos">
         <div class="seccion">
         <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAAAXNSR0IArs4c6QAAAYVJREFUOE+tkzFPG0EQhefN3qzOsgt3ULqkpIMOuqSkI13oKFEqRBXTmS78ApRfEbnCqULpEjqX7uzGuvXe7Q3ayLZOx10QUq6d+968eTOLLMuGzHwJYJ/efhMAQxH53VAjeO//qOpYVZ9U1W1/YuZPRHQB4LlNIMIPIYTbTqczq6p777+q6hciio7mzDyqO/gnTESnRVGMkyQ5UtWDusC7cAjhZwjh2Vp7XRfYwdEyMx8CmIvINM/z82ibmaeq+gJgT1XPiMhtM9jBG/AqBpfn+b2IHAO4IqLBNgtVTQH0AfwQkZtW202rybJsYIz5TkRLa+23HZym6dx7P2DmN/suimIWt9EKi8hRWZZDIjqodwUwSpLk1jm339p5tVr1jTFpFQ4huG63uwTgWjvXj+RDMxtjTlR1CGCX7kbAqeqdtXbUats5txSRmGa/2jXee1mWs16vN//vth9jmiIybpqz9ljijccnPP17JOv1+heAz++Blfpk8wonWCwW/aZZm8Sq88f6Kza1NiLLOV8UAAAAAElFTkSuQmCC" id = "cerrarSesion">
           <span>Documentos</span>
@@ -377,10 +379,16 @@ button:active {
 
   <img src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAASCAYAAACEnoQPAAAAAXNSR0IArs4c6QAAAYVJREFUOE+tkzFPG0EQhefN3qzOsgt3ULqkpIMOuqSkI13oKFEqRBXTmS78ApRfEbnCqULpEjqX7uzGuvXe7Q3ayLZOx10QUq6d+968eTOLLMuGzHwJYJ/efhMAQxH53VAjeO//qOpYVZ9U1W1/YuZPRHQB4LlNIMIPIYTbTqczq6p777+q6hciio7mzDyqO/gnTESnRVGMkyQ5UtWDusC7cAjhZwjh2Vp7XRfYwdEyMx8CmIvINM/z82ibmaeq+gJgT1XPiMhtM9jBG/AqBpfn+b2IHAO4IqLBNgtVTQH0AfwQkZtW202rybJsYIz5TkRLa+23HZym6dx7P2DmN/suimIWt9EKi8hRWZZDIjqodwUwSpLk1jm339p5tVr1jTFpFQ4huG63uwTgWjvXj+RDMxtjTlR1CGCX7kbAqeqdtXbUats5txSRmGa/2jXee1mWs16vN//vth9jmiIybpqz9ljijccnPP17JOv1+heAz++Blfpk8wonWCwW/aZZm8Sq88f6Kza1NiLLOV8UAAAAAElFTkSuQmCC" id = "Fotoentrad">
 </div>
-<div class="searchBox">
+
+<form method= "POST">
+<label>Search</label>
+<input type="text" name="search">
+<input type="submit" name="submit">
+</form>
+<div class="searchBox"> 
 
   <input class="searchInput" type="text" name="" placeholder="Buscar fuentes/resumenes">
-  <button class="searchButton" href="#">
+  <button class="searchButton" href="#"> }
          
         
 

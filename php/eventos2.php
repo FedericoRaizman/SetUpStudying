@@ -1,11 +1,9 @@
 <?php
-header('Content-Type: application/json');
-$pdo=new PDO("mysql:dbname=sus;host= 127.0.0.1,"root", "rootroot")
+include("conexion.php");
 
-$setenciaSQL= $pdo->prepare("SELECT * FROM eventos"); 
-$setenciaSQL ->execute();
+$sql = "INSERT INTO eventos (IDUSUARIO,title,descripcion,start,end) VALUES (".$_SESSION['id_usuario'].",'".$_REQUEST["titulo"]."','start','end','descripcion')
+$datos = $conexion->query($sql);
 
-$resultado=$setenciaSQL-> fetchALL(PDO::FETCH_ASSOC);
-echo json_encode($resultado);
+var_dump($datos);
 
 ?>
