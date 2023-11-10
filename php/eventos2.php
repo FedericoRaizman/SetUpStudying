@@ -1,7 +1,7 @@
 <?php
 include("conexion.php");
 
-$sql = "INSERT INTO eventos (IDUSUARIO,title,descripcion,start,end) VALUES (".$_SESSION['id_usuario'].",'".$_REQUEST["titulo"]."','start','end','descripcion')
+$sql = "INSERT INTO eventos (IDUSUARIO,title,descripcion,end) VALUES (".$_SESSION['IDUSUARIO'].",'".$_REQUEST["txtTitulo"]."','".$_REQUEST["txtHora"]."','".$_REQUEST["txtDescripcion"]."')";
 $datos = $conexion->query($sql);
 
 var_dump($datos);
