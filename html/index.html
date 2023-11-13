@@ -75,35 +75,8 @@
              $("#ModalEventos").modal();
 
          },
-        eventSources:[{
-          events:[
-          {
-            title:'Evento 1, Prueba de matematica',
-            descripcion:"Funcion Logaritmica y Modelos exponenciales",
-            start:'2023-11-16',
-            color:"#FF0F0",
-            textColor:"#FFFFFF"
-          },
-          {
-            title:'Evento 2, Prueba de fisica',
-            descripcion:"Todo lo visto en clase",
-            start:'2023-11-5',
-            end:'2023-11-6',
-          },
-          {
-            title:'Evento 3, Tp de geografia',
-            descripcion:"Problemas medioambientales",
-            start:'2023-11-25T10:40:00',
-            allDay:false,
-            color:"#FFF000",
-            textColor:"#000000"
-            
-          }
-         ],
-         color:"black",
-         textColor:"yellow"
-
-        }],
+        events:'http://localhost/setupstudying/www/php/eventos2.php',
+       
         eventClick:function(calEvent,jsEvent,view){
           
           $('#tituloEvento').html(calEvent.title);
