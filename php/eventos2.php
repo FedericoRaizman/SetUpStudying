@@ -1,9 +1,13 @@
 <?php
+session_start();
 include("conexion.php");
 
-$sql = "INSERT INTO eventos (IDUSUARIO,title,descripcion,end) VALUES (".$_SESSION['IDUSUARIO'].",'".$_REQUEST["txtTitulo"]."','".$_REQUEST["txtHora"]."','".$_REQUEST["txtDescripcion"]."')";
+$sql = "INSERT INTO eventos (IDUSUARIO,title,descripcion,inicio,final) VALUES (".$_SESSION['Usu'].",'".$_REQUEST["txtTitulo"]."','".$_REQUEST["Descripcion"]."','".$_REQUEST["horainicio"]."','".$_REQUEST["horafinal"]."')";
+//echo $sql;
 $datos = $conexion->query($sql);
+echo "OK";
 
-var_dump($datos);
+$conexion->close();
+//var_dump($datos);
 
 ?>
