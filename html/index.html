@@ -34,25 +34,6 @@
     $(document).ready(function() {
 
 
-      $("#Guardar").click(function(){
-        //alert ("txtTitulo="+$("#txtTitulo").val()+"&Descripcion="+$("#txtDescripcion").val()+"&horainicio="+$("#horainicio").val()+"&horafinal="+$("#horafinal").val()+"");
-        
-        $.ajax({
-          type:"POST",
-          url:"../php/eventos2.php",
-          dataType:"text",
-          data:"txtTitulo="+$("#txtTitulo").val()+"&Descripcion="+$("#txtDescripcion").val()+"&horainicio="+$("#txtFecha").val()+' '+$("#horainicio").val()+"&horafinal="+$("#txtFecha").val()+' '+$("#horafinal").val()+"",
-          success:function(response){
-              alert(response);
-          },
-          error:function(error){
-
-          }
-        });
-        
-      });
-
-
       $('#CalendarioWeb').fullCalendar({
         header: {
           left:'today,prev,next,Miboton',
@@ -75,7 +56,7 @@
              $("#ModalEventos").modal();
 
          },
-        events:'http://localhost/setupstudying/www/php/eventos2.php',
+        events:'http://localhost/SetUpStudying/php/eventos.php',
        
         eventClick:function(calEvent,jsEvent,view){
           
@@ -89,7 +70,7 @@
 
      });
    </script>
-<!--
+
 <div class="modal fade" id="Modalarriba" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -121,7 +102,7 @@
     </div>
   </div>
 </div>
--->
+
 <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -143,7 +124,7 @@
       </div>
       <div class="modal-footer">
 
-        <button type="button" id="Guardar" class="btn btn-success" >Agregar</button>
+        <button type="button" id="btnAgregar" class="btn btn-success" >Agregar</button>
         <button type="button" class="btn btn-success" >Modificar</button>
         <button type="button" class="btn btn-danger" >Borrar</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -152,6 +133,29 @@
     </div>
   </div>
 </div>
+<script>
+
+  $('btnAgregar').click(function(){
+    
+
+      var NuevoEvento={
+        title:$('#txtTitulo').val(),
+        start:$('#txtFecha').val()+ " "+ $('#txtHora').val(),
+        color:$('#txtColor').val(),
+        descripcion:$('#txtDescripcion').val(),
+        textColor:"#FFFFFF"
+
+
+
+
+        
+      };
+      $('#CalendarioWeb').fullCalendar('renderEvent, NuevoEvento');
+      $("#ModalEventos").modal('toggle');
+
+  });
+
+</script>
 
  </body>
  </html>
