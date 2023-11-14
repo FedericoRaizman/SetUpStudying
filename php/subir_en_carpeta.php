@@ -1,5 +1,30 @@
 <?php 
 session_start();
+include("conexion.php");
+
+if (isset($_POST['archivo'])){
+    $targetDir = "../uploads/";
+    $targetFile = $targetDir . basename($_FILES["archivo"]["name"]);
+    $uploadOk = 1;
+
+   
+    if (file_exists($targetFile)) {
+        echo "Lo siento, el archivo ya existe.";
+        $uploadOk = 0;
+    }
+
+    
+    if ($uploadOk == 0) {
+        echo "Lo siento, tu archivo no fue subido.";
+    
+    } else {
+        if (move_uploaded_file($_FILES["archivo"]["tmp_name"], $targetFile)) {
+            echo "El archivo " . basename($_FILES["archivo"]["name"]) . " Se subio correctamente ";
+        } else {
+            echo "Lo siento, hubo un error al subir tu archivo.";
+        }
+    }
+}else{
 
 if (isset ($_FILES['file'])){
     $directorio = __DIR__ . DIRECTORY_SEPARATOR . "../uploads/".$_SESSION['Usu']."/".$_POST['folder_name'];
@@ -42,5 +67,6 @@ if (isset ($_FILES['file'])){
     echo $directorio;
     echo "<script>window.location = 'carpeta2.php?carpeta=".$_POST['folder_name']."'</script>";
 
+}
 }
 ?>

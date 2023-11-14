@@ -460,8 +460,12 @@ button:hover {
 </div>
 
 <a href="formulariocrearcarpeta.html">
-  <button class="btn">Agregar carpeta</button>
+  <button class="btn">Crear Carpeta</button>
 </a>
+<a href="formulariosubirarchivo.html">
+  <button class="btn">Subir Archivo</button>
+</a>
+
 <div style="padding-left: 100px;">
 <?php 
     $directorio = __DIR__ . DIRECTORY_SEPARATOR . "../uploads/".$_SESSION['Usu']."/".$_GET['folder_name'];

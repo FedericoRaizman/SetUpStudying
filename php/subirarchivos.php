@@ -1,5 +1,5 @@
 <?php
-include("../html/archivos.html");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $targetDir = "../uploads/";
     $targetFile = $targetDir . basename($_FILES["archivo"]["name"]);

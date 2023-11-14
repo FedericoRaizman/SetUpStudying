@@ -1,11 +1,20 @@
 <?php
-header ('Content-Type: application/json');
-$pdo=pdo=new PDO (:"mysql:dbname=sistema;host=127.0.0.1","root","");
 
-$sentenciaSQL = $pdo->prepare("SELECT * FROM eventos");
-$sentenciaSQL->execute();
+session_start();
+include("conexion.php");
 
-$resultado= $sentenciaSQL->fetchALL(PDO: :FETCH_ASSOC)
-'['.json_encode($resultado).']';
+$sql = "SELECT * FROM eventos WHERE IDUSUARIO=".$_SESSION['Usu']."";
+//echo $sql;
+$datos = $conexion->query($sql);
+
+if($datos->num_rows>0){
+    while($row[]=$datos->fetch_assoc()){
+    }
+}
+
+echo json_encode($row);
+$conexion->close();
+
+
 
 ?>
