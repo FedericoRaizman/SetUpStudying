@@ -59,10 +59,24 @@
         events:'http://localhost/SetUpStudying/php/eventos.php',
        
         eventClick:function(calEvent,jsEvent,view){
-          
+
+          // H2
           $('#tituloEvento').html(calEvent.title);
-          $('#descripcionEvento').html(calEvent.descripcion);
-          $("#Modalarriba").modal();
+
+
+        //mostrar info
+          $('#txtDescripcion').val(calEvent.descripcion);
+          $('#txtTitulo').val(calEvent.title);
+          $('#txtID').val(calEvent.id);
+          $('#txtColor').val(calEvent.color);
+
+          FechaHora= calEvent.start._i.split(" ");
+          $('#txtHora').val(calEvent.FechaHora[0]);
+          $('#txtFecha').val(calEvent.FechaHora[1]);
+
+
+
+          $("#ModalEventos").modal();
 
         }
          
@@ -71,37 +85,6 @@
      });
    </script>
 
-<div class="modal fade" id="Modalarriba" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="tituloEvento"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div id="descripcionEvento"></div>
-
-        Fecha: <input type="text" id="txtFecha" name="txtFecha" /><br/>
-        Titulo: <input type="text" id="txtTitulo" /><br/>
-        Hora: <input type="text" id="txtHora" value="10:30" /><br/>
-        Descripcion: <textarea id="txtDescripcion" rows="3"></textarea><br/>
-        Color: <input type="color" value="#ff0000" id="txtColor"><br/>
-
-        
-      </div>
-      <div class="modal-footer">
-
-        <button type="button" id="Guardar" class="btn btn-success" >Agregar</button>
-        <button type="button" class="btn btn-success" >Modificar</button>
-        <button type="button" class="btn btn-danger" >Borrar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="modal fade" id="ModalEventos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -113,10 +96,10 @@
         </button>
       </div>
       <div class="modal-body">
+        Id: <input type="text" id="txtID" name="txtID" /><br/>
         Fecha: <input type="text" id="txtFecha" name="txtFecha" /><br/>
         Titulo: <input type="text" id="txtTitulo" /><br/>
         Hora Inicio: <input type="text" id="horainicio" value="10:30" /><br/>
-        Hora Final: <input type="text" id="horafinal" value="10:30" /><br/>
         Descripcion: <textarea id="txtDescripcion" rows="3"></textarea><br/>
         Color: <input type="color" value="#ff0000" id="txtColor"><br/>
         
@@ -135,25 +118,29 @@
 </div>
 <script>
 
+
+var NuevoEvento;
+
   $('btnAgregar').click(function(){
-    
-
-      var NuevoEvento={
-        title:$('#txtTitulo').val(),
-        start:$('#txtFecha').val()+ " "+ $('#txtHora').val(),
-        color:$('#txtColor').val(),
-        descripcion:$('#txtDescripcion').val(),
-        textColor:"#FFFFFF"
-
-
-
-
-        
-      };
+      RecolectarDatosGUI(); 
       $('#CalendarioWeb').fullCalendar('renderEvent, NuevoEvento');
       $("#ModalEventos").modal('toggle');
 
   });
+
+  function RecolectarDatosGUI(){
+    var NuevoEvento={
+        id:$('txtID').val(),
+        title:$('#txtTitulo').val(),
+        start:$('#txtFecha').val()+ " "+ $('#txtHora').val(),
+        color:$('#txtColor').val(),
+        descripcion:$('#txtDescripcion').val(),
+        textColor:"#FFFFFF",
+        end:$('#txtFecha').val()+ " "+ $('#txtHora').val(),
+
+        
+      };
+  }
 
 </script>
 
