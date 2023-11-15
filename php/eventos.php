@@ -9,12 +9,15 @@ switch($accion){
 
           case 'agregar' :
 
+            echo "Instruccion agregar";
             break;
             case 'eliminar':
 
+                echo "Instruccion eliminar";
                 break;
             case 'modificar':
 
+                echo "Instruccion modificar";
                 break;
         default:
 
