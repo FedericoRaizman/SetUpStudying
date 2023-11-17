@@ -21,11 +21,19 @@ switch($accion){
                 "final" => $_POST['final']
             ));
             echo json_encode ($respuesta);
-
             break;
             case 'eliminar':
-
                 echo "Instruccion eliminar";
+                $respuesta=false;
+                if(isset($_POST['Id'])){
+
+                    $sentenciaSQL= $pdo-> prepare("DELETE FROM eventos WHERE ID=:ID");
+                    $respuesta= $sentenciaSQL->execute(array("ID"=>$_POST['id']));
+
+                }
+                echo json_encode($respuesta);
+
+
                 break;
             case 'modificar':
 
