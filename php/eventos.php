@@ -10,7 +10,7 @@ switch($accion){
           case 'agregar' :
             $sentenciaSQL= $pdo->prepare("INSERT INTO 
             eventos(title,descripcion,color,textColor,inicio,final)
-            VALUES(:title,:descripcion,:color,:textColor,:start,:end)");
+            VALUES(:title,:descripcion,:color,:textColor,:inicio,:final)");
 
             $respuesta=$sentenciaSQL->execute(array(
                 "title" => $_POST['title'],
@@ -37,7 +37,26 @@ switch($accion){
                 break;
             case 'modificar':
 
-                echo "Instruccion modificar";
+            $sentenciaSQL = $pdo->prepare("UPDATE eventos SET
+            title=:title,
+            descripcion=:descripcion,
+            color=:color,
+            textColor=:textColor,
+            inicio=:inicio,
+            final=;final
+            WHERE ID=:ID
+            ");
+            $respuesta=$sentenciaSQL->execute(array(
+                "title" => $_POST['title'],
+                "descripcion" => $_POST['descripcion'],
+                "color" => $_POST['color'],
+                "textColor" => $_POST['textColor'],
+                "inicio" => $_POST['inicio'],
+                "final" => $_POST['final']
+            ));
+            echo json_encode($respuesta);
+
+
                 break;
         default:
 
