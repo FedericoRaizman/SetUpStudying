@@ -122,9 +122,9 @@
 var NuevoEvento;
 
   $('btnAgregar').click(function(){
-      RecolectarDatosGUI(); 
-      $('#CalendarioWeb').fullCalendar('renderEvent, NuevoEvento');
-      $("#ModalEventos").modal('toggle');
+      RecolectarDatosGUI();
+      EnviarInformacion('agregar' ,NuevoEvento);
+      
 
   });
 
@@ -141,7 +141,24 @@ var NuevoEvento;
         
       };
   }
+function EnviarInformacion(accion,objEvento){
+  $.ajax({
+    type:'POST',
+    url:'eventos.php?accion=' +accion,
+    data:objEvento,
+    success:function(msg){
+      if(msg){
+        $('#CalendarioWeb').fullCalendar('refetchEvents');
+        $("#ModalEventos").modal('toggle');
 
+      }
+    },
+    error:function(){
+      alert("Hay un error ..");
+
+    }
+  });
+}
 </script>
 
  </body>
