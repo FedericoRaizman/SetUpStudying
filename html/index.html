@@ -71,15 +71,28 @@
           $('#txtColor').val(calEvent.color);
 
           FechaHora= calEvent.start._i.split(" ");
-          $('#txtHora').val(calEvent.FechaHora[0]);
-          $('#txtFecha').val(calEvent.FechaHora[1]);
+          $('#txtFecha').val(calEvent.fechaHora[0]);
+          $('#txtHora').val(calEvent.fechaHora[1]);
 
 
 
           $("#ModalEventos").modal();
 
-        }
-         
+        },
+        editable:true,
+        eventDrop:function(calEvent){
+          $('#txtID').val(calEvent.id);
+          $('#txtTitulo').val(calEvent.title);
+          $('#txtColor').val(calEvent.color);
+          $('#txtDescripcion').val(calEvent.descripcion);
+
+          var fechaHora=calEvent.start.format().split("T");
+          $('#txtFecha').val(calEvent.fechaHora[0]);
+          $('#txtHora').val(calEvent.fechaHora[1]);
+
+          RecolectarDatosGUI();
+          EnviarInformacion('modificar' ,NuevoEvento,true);
+        }         
        });
 
      });
@@ -149,7 +162,7 @@ var NuevoEvento;
         
       };
   }
-function EnviarInformacion(accion,objEvento){
+function EnviarInformacion(accion,objEvento,modal){
   $.ajax({
     type:'POST',
     url:'eventos.php?accion=' +accion,
@@ -157,7 +170,9 @@ function EnviarInformacion(accion,objEvento){
     success:function(msg){
       if(msg){
         $('#CalendarioWeb').fullCalendar('refetchEvents');
-        $("#ModalEventos").modal('toggle');
+        if(!modal){
+          $("#ModalEventos").modal('toggle');
+        }
 
       }
     },
