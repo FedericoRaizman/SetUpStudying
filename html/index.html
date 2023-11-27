@@ -22,6 +22,11 @@
 
 <style>
 
+  .fc th{
+    padding: 10px 0px;
+    vertical-align: middle;
+    background: #F2F2F2;
+  }
   
 </style>
   
@@ -44,7 +49,7 @@
         header: {
           left:'today,prev,next',
           center:'title',
-          right: 'month,basicWeek,basicDay,agendaWeek,agendaDay'
+          right: 'month,basicWeek,basicDay, agendaWeek,agendaDay'
         },
         customButtons:{
           Miboton:{
@@ -57,16 +62,36 @@
            }
          },
          dayClick:function(date,jsEvent,view){
+
+             $('#btnAgregar').prop("disabled",false);
+             $('#btnModificar').prop("disabled",true);
+             $('#btnEliminar').prop("disabled",true);
+
              limpiarFormulario();
              $('#txtFecha').val(date.format());
              $("#ModalEventos").modal();
 
          },
         events:'http://localhost/SetUpStudying/php/eventos.php',
+
+        /*!  eventSources:[{
+        events:[
+          {
+              title:'Ejemplo Prueba de Matematica',
+              start:'2023-11-27',
+              end:'2023-11-28',
+              color:'#FF0F0',
+              textColor:'#FFFFFF',
+
+          }
+        ]
+        }],
+        */
+         
        
         eventClick:function(calEvent,jsEvent,view){
 
-          // H2
+          
           $('#tituloEvento').html(calEvent.title);
 
 
